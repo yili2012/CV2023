@@ -29,7 +29,7 @@
 // General entry that is split into a left and right half (for experience and education).
 #let cv_entry(left_content: none, right_content: none) = {
     grid(
-    columns: (11fr, 6fr),
+    columns: (4fr, 1fr),
     column-gutter: 1cm,
     {
       set align(left)
@@ -70,7 +70,7 @@
         let tasks_list = []
 
         for task in tasks {
-          tasks_list += [- #task]
+          tasks_list += [ #task]
         }
 
         tasks_list
@@ -87,12 +87,9 @@
 }
 
 // Entry for skills
-#let skill_entry(category, skills) = {
-  [== #category]
-
+#let skill_entry(skills) = {
   let cell = rect.with(radius: 5pt, inset: (top: 4pt, bottom: 4pt, left: 5pt, right: 5pt))
-  let boxes = for skill in skills {(box(cell(skill)),)}
-
+  let boxes = for skill in skills {(box(cell(smallcaps(skill))),)}
   {boxes.join("  ")}
 }
 
